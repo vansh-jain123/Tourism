@@ -1,0 +1,296 @@
+.prompt-container {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 20px 40px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(240, 178, 50, 0.1);
+  border: 1px solid rgba(240, 178, 50, 0.25);
+  color: var(--accent-color);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+
+.text-glow {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.input-form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(26, 19, 51, 0.6);
+}
+
+.input-row { display: flex; gap: 16px; }
+.input-group { flex: 1; text-align: left; }
+
+.input-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.text-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.text-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(240, 178, 50, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.quick-picks-section { display: flex; flex-direction: column; gap: 10px; }
+.quick-picks { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.quick-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+
+.quick-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.quick-btn:hover {
+  color: var(--text-main);
+  border-color: var(--accent-color);
+  background: rgba(240, 178, 50, 0.06);
+}
+
+.quick-btn.active {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(240, 178, 50, 0.1);
+  box-shadow: 0 0 14px rgba(240, 178, 50, 0.12);
+}
+
+.submit-btn {
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 58px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(240, 178, 50, 0.3);
+}
+
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.loading-state { display: flex; align-items: center; gap: 12px; }
+
+.spinner {
+  width: 22px; height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.features-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.feature-card {
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: rgba(26, 19, 51, 0.5);
+}
+
+.interactive-feature {
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(240, 178, 50, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(26, 19, 51, 0.8);
+}
+
+.feature-icon { font-size: 1.6rem; margin-bottom: 4px; }
+.feature-card strong { font-size: 0.95rem; }
+.feature-desc { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Feature Modal Styles */
+.feature-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 20, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.feature-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: 0;
+  border-radius: 24px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  overflow: hidden;
+}
+
+.feature-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(10, 5, 20, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.feature-modal-close:hover {
+  background: rgba(255, 122, 92, 0.8);
+  transform: scale(1.1);
+}
+
+.feature-modal-hero {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.feature-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-modal-icon-overlay {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  z-index: 5;
+}
+
+.feature-modal-text {
+  padding: 40px 30px 30px;
+}
+
+.feature-modal-title {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.feature-modal-details {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 700px) {
+  .hero-title { font-size: 2.4rem; }
+  .input-row { flex-direction: column; }
+  .features-row { grid-template-columns: repeat(2, 1fr); }
+  .feature-modal-content { max-width: 90%; }
+  .feature-modal-text { padding: 40px 20px 20px; }
+}
