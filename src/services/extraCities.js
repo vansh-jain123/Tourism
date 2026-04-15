@@ -241,4 +241,186 @@ export const EXTRA_CITIES = {
     captions: ["Bangkok — where $10 feels like $1000 💰🇹🇭", "Temple hopping and Pad Thai dropping 🍜🛕", "The city of angels never disappoints ✨🇹🇭"],
     hashtags: ["#Bangkok", "#Thailand", "#ThaiFood", "#PadThai", "#GrandPalace", "#TravelThailand", "#Wanderlust", "#StreetFood", "#TravelReels", "#ExploreAsia", "#BangkokLife", "#InstaTravel", "#WatArun", "#ThaiVibes", "#BudgetTravel"]
   },
+
+  bangalore: {
+    name: "Bangalore", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1596162954151-cdcb9229df8e?q=80&w=2070&auto=format&fit=crop",
+    attractions: [
+      { name: "Lalbagh Botanical Garden", desc: "A 240-acre haven of exotic plants and the famous Glass House.", fee: "₹30", bestTime: "Morning", imagePrompt: "Lalbagh Glass House Bangalore, surrounded by lush gardens, morning sunlight, 4K" },
+      { name: "Bangalore Palace", desc: "Tudor-style royal architecture with beautiful wood carvings.", fee: "₹230", bestTime: "10 AM - 4 PM", imagePrompt: "Bangalore Palace exterior, Tudor architecture, vibrant green lawns, 4K" },
+      { name: "Cubbon Park", desc: "The green lung of the city, perfect for a relaxing stroll.", fee: "Free", bestTime: "Early Morning", imagePrompt: "Cubbon Park Bangalore, bamboo groves, dappled sunlight, peaceful, 4K" },
+      { name: "Vidhana Soudha", desc: "The majestic state legislature building, beautifully lit at night.", fee: "Free (Exterior)", bestTime: "Evening", imagePrompt: "Vidhana Soudha Bangalore illuminated at night, grand architecture, 4K" },
+    ],
+    hotels: [
+      { name: "Zostel Bangalore (Indiranagar)", price: 15, location: "Indiranagar", features: ["WiFi", "Cafe", "Social Area"], rating: 4.4 },
+      { name: "The Leela Palace", price: 300, location: "Old Airport Road", features: ["Luxury", "Pool", "Spa", "Fine Dining"], rating: 4.9 },
+      { name: "ITC Gardenia", price: 200, location: "Residency Road", features: ["Eco-Luxury", "Pool", "Restaurants"], rating: 4.8 },
+    ],
+    food: {
+      dishes: ["Masala Dosa", "Filter Coffee", "Bisi Bele Bath", "Idli Vada"],
+      restaurants: [
+        { name: "Vidyarthi Bhavan", specialty: "Masala Dosa", priceRange: "₹50–₹150", desc: "Legendary dosa spot functioning since 1943" },
+        { name: "Toit", specialty: "Craft Brewery", priceRange: "₹800–₹2,000", desc: "Iconic brewpub in Indiranagar" },
+      ]
+    },
+    reelScript: { hook: "Silicon Valley but make it aesthetic 🌴☕", voiceover: ["Lalbagh mornings.", "Filter coffee hits different.", "Palace views."], scenes: ["Glass house walk", "Pouring filter coffee", "Palace drone shot"], textOverlays: ["Garden City 🌱", "Coffee fuel ☕", "Royal vibes 👑"] },
+    captions: ["Garden city state of mind 🌿", "Brewing magic in Bangalore ☕✨"],
+    hashtags: ["#Bangalore", "#NammaBengaluru", "#Bengaluru", "#IndiaTravel", "#CafeCapital", "#GardenCity"]
+  },
+
+  lucknow: {
+    name: "Lucknow", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1707923485077-8b6f3a61cd54?q=80&w=2070&auto=format&fit=crop",
+    attractions: [
+      { name: "Bara Imambara", desc: "A magnificent architectural marvel featuring the Bhool Bhulaiya (labyrinth).", fee: "₹50", bestTime: "Morning", imagePrompt: "Bara Imambara Lucknow, grand arches, heritage architecture, 4K" },
+      { name: "Rumi Darwaza", desc: "An imposing gateway representing Awadhi architecture.", fee: "Free", bestTime: "Evening", imagePrompt: "Rumi Darwaza Lucknow beautifully lit at twilight, 4K" },
+      { name: "Chota Imambara", desc: "Also known as the Palace of Lights, decorated with stunning chandeliers.", fee: "₹25", bestTime: "Afternoon", imagePrompt: "Chota Imambara interior chandeliers, golden light, 4K" },
+      { name: "Hazratganj Market", desc: "The heart of the city for shopping, strolling, and trying street food.", fee: "Free", bestTime: "Evening", imagePrompt: "Hazratganj Lucknow, bustling market, neon lights, 4K" },
+    ],
+    hotels: [
+      { name: "Taj Mahal Lucknow", price: 150, location: "Gomti Nagar", features: ["Luxury Dome", "Pool", "Spa", "Dining"], rating: 4.8 },
+      { name: "Renaissance Lucknow", price: 100, location: "Gomti Nagar", features: ["Rooftop Pool", "City Views", "Restaurant"], rating: 4.6 },
+      { name: "Levana Hotel", price: 50, location: "Hazratganj", features: ["WiFi", "Central", "Restaurant"], rating: 4.1 },
+    ],
+    food: {
+      dishes: ["Tunday Kabab", "Lucknowi Biryani", "Malai Ki Gilori", "Basket Chaat"],
+      restaurants: [
+        { name: "Tunday Kababi", specialty: "Galouti Kebabs", priceRange: "₹100–₹400", desc: "World-famous melt-in-mouth kebabs" },
+        { name: "Royal Cafe", specialty: "Basket Chaat", priceRange: "₹150–₹350", desc: "The inventor of the iconic Basket Chaat" },
+      ]
+    },
+    reelScript: { hook: "Welcome to the City of Nawabs ✨🕌", voiceover: ["Bara Imambara vibes.", "Tunday Kababs that melt.", "Rumi Darwaza glowing."], scenes: ["Walking in labyrinth", "Kebab sizzling on tawa", "Twilight gate shot"], textOverlays: ["Nawabi royalty 👑", "Kebab heaven 🍖", "Awadhi magic ✨"] },
+    captions: ["Muskuraiye, aap Lucknow mein hain 😊✨", "Kebabs and architecture — what else do you need? 🍖🕌"],
+    hashtags: ["#Lucknow", "#CityOfNawabs", "#LucknowiFood", "#Awadh", "#IncredibleIndia", "#UPTourism"]
+  },
+
+  varanasi: {
+    name: "Varanasi", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=2076&auto=format&fit=crop",
+    attractions: [
+      { name: "Dashashwamedh Ghat", desc: "The main and most spectacular ghat, famous for the evening Ganga Aarti.", fee: "Free", bestTime: "Evening (Aarti at 6:30 PM)", imagePrompt: "Dashashwamedh Ghat Ganga Aarti, fire lamps, priests, spiritual, 4K" },
+      { name: "Kashi Vishwanath Temple", desc: "One of the most sacred Hindu temples dedicated to Lord Shiva.", fee: "Free (VIP ₹300)", bestTime: "Early Morning", imagePrompt: "Kashi Vishwanath Temple corridor, gold spire, crowds of devotees, 4K" },
+      { name: "Assi Ghat", desc: "A peaceful ghat popular among students and tourists, great for morning boat rides.", fee: "Free", bestTime: "Sunrise", imagePrompt: "Assi Ghat Varanasi at sunrise, wooden boats on Ganges, peaceful, 4K" },
+      { name: "Sarnath", desc: "A sacred Buddhist site where Lord Buddha gave his first sermon.", fee: "₹25", bestTime: "Morning", imagePrompt: "Dhamek Stupa Sarnath, Buddhist monks praying, serene, 4K" },
+    ],
+    hotels: [
+      { name: "BrijRama Palace", price: 300, location: "Darbhanga Ghat", features: ["Heritage Palace", "River View", "Fine Dining"], rating: 4.8 },
+      { name: "Zostel Varanasi", price: 10, location: "Near Assi Ghat", features: ["WiFi", "Rooftop Cafe", "Social Area"], rating: 4.4 },
+      { name: "Taj Ganges", price: 180, location: "Cantonment", features: ["Luxury", "Pool", "Spa"], rating: 4.7 },
+    ],
+    food: {
+      dishes: ["Kachori Sabzi", "Malaiyo", "Banarasi Paan", "Lassi", "Baati Chokha"],
+      restaurants: [
+        { name: "Blue Lassi Shop", specialty: "Flavored Lassi", priceRange: "₹80–₹150", desc: "Famous old lassi shop with countless fruit flavors" },
+        { name: "Deena Chaat Bhandar", specialty: "Tamatar Chaat", priceRange: "₹50–₹120", desc: "The best local chaat in Kashi" },
+      ]
+    },
+    reelScript: { hook: "The oldest living city in the world 🕉️🌅", voiceover: ["Ganga Aarti will give you goosebumps.", "Sunrise boat rides.", "Blue lassi for the soul.", "Kashi is an emotion."], scenes: ["Priests holding fire lamps", "Boat floating at dawn", "Clay cup of lassi", "Narrow alleys"], textOverlays: ["Ganga Aarti 🔥", "Morning peace 🌅", "Banarasi vibes 📿"] },
+    captions: ["Where light and spirituality meet 🌅🕉️", "Lost in the sacred alleys of Kashi ✨"],
+    hashtags: ["#Varanasi", "#Kashi", "#GangaAarti", "#Banaras", "#SpiritualIndia", "#IncredibleIndia"]
+  },
+
+  ayodhya: {
+    name: "Ayodhya", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1706003233800-47da00f2e087?q=80&w=2070&auto=format&fit=crop",
+    attractions: [
+      { name: "Ram Mandir", desc: "The grand and beautifully crafted temple at the birthplace of Lord Ram.", fee: "Free", bestTime: "Morning", imagePrompt: "Ram Mandir Ayodhya, grand sandstone architecture, devotees, divine light, 4K" },
+      { name: "Hanuman Garhi", desc: "A renowned 10th-century temple dedicated to Lord Hanuman, offering city views.", fee: "Free", bestTime: "Early Morning", imagePrompt: "Hanuman Garhi temple stairs, orange flags, traditional architecture, 4K" },
+      { name: "Ram ki Paidi", desc: "A series of scenic ghats along the Saryu River, stunning during the evening Aarti.", fee: "Free", bestTime: "Evening", imagePrompt: "Ram ki Paidi Ayodhya at night, illuminated steps, river reflection, 4K" },
+      { name: "Kanak Bhawan", desc: "Also known as Sone-ka-Ghar, a beautiful palace gifted to Goddess Sita.", fee: "Free", bestTime: "Morning", imagePrompt: "Kanak Bhawan Ayodhya interior, intricately decorated, peaceful, 4K" },
+    ],
+    hotels: [
+      { name: "Cygnett Collection Hotel", price: 80, location: "Near Railway Station", features: ["WiFi", "AC", "Restaurant"], rating: 4.2 },
+      { name: "Park Inn by Radisson", price: 120, location: "Ayodhya City", features: ["Modern", "Restaurant", "Comfort"], rating: 4.5 },
+      { name: "Ramprastha Hotel", price: 30, location: "Near Naya Ghat", features: ["Budget", "River Proximity"], rating: 3.8 },
+    ],
+    food: {
+      dishes: ["Kachori Jalebi", "Rabri", "Aloo Tikki", "Samosa", "Thali"],
+      restaurants: [
+        { name: "Makan-Malai Restaurant", specialty: "North Indian Veg", priceRange: "₹150–₹400", desc: "Pure vegetarian thali and sweets" },
+        { name: "Kanji Sweets", specialty: "Pedha & Sweets", priceRange: "₹50–₹200", desc: "Famous local sweet shop" },
+      ]
+    },
+    reelScript: { hook: "Experiencing the divine city of Ayodhya 🙏✨", voiceover: ["The grandeur of Ram Mandir.", "Evening Aarti at Saryu River.", "Peace at Kanak Bhawan.", "Jai Shri Ram."], scenes: ["Ram Mandir wide shot", "River Aarti lamps", "Temple bells ringing", "Devotees chanting"], textOverlays: ["Ram Mandir 🙏", "Saryu Aarti 🔥", "Divine energy ✨"] },
+    captions: ["Blessed to witness the beauty of Ayodhya 🙏✨", "In the city of Lord Ram 🕉️🚩"],
+    hashtags: ["#Ayodhya", "#RamMandir", "#JaiShriRam", "#SpiritualIndia", "#IncredibleIndia", "#UPTourism"]
+  },
+
+  mumbai: {
+    name: "Mumbai", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?q=80&w=2065&auto=format&fit=crop",
+    attractions: [
+      { name: "Gateway of India", desc: "The iconic arch overlooking the Arabian Sea, built in the early 20th century.", fee: "Free", bestTime: "Early Morning", imagePrompt: "Gateway of India sunrise, pigeons flying, Taj Hotel in background, 4K" },
+      { name: "Marine Drive", desc: "The Queen's Necklace, a beautiful 3.6km long boulevard along the coast.", fee: "Free", bestTime: "Sunset / Night", imagePrompt: "Marine Drive Mumbai night, Queen's necklace streetlights, ocean waves, 4K" },
+      { name: "Elephanta Caves", desc: "UNESCO-listed ancient rock-cut cave temples on an island.", fee: "₹40 (Ferry extra)", bestTime: "Morning", imagePrompt: "Elephanta Caves intricate stone carvings of Shiva, historic, 4K" },
+      { name: "Colaba Causeway", desc: "Famous shopping street for souvenirs, clothes, and heritage cafes.", fee: "Free", bestTime: "Afternoon", imagePrompt: "Colaba Causeway busy street, colorful shops, vintage vibes, 4K" },
+    ],
+    hotels: [
+      { name: "The Taj Mahal Palace", price: 400, location: "Colaba", features: ["Heritage Luxury", "Sea View", "Pool", "Fine Dining"], rating: 4.9 },
+      { name: "Trident Nariman Point", price: 200, location: "Nariman Point", features: ["Sea View", "Pool", "Spa"], rating: 4.7 },
+      { name: "Zostel Mumbai", price: 15, location: "Andheri", features: ["WiFi", "Cafe", "Social Area"], rating: 4.3 },
+    ],
+    food: {
+      dishes: ["Vada Pav", "Pav Bhaji", "Misal Pav", "Bombay Sandwich", "Bhel Puri"],
+      restaurants: [
+        { name: "Leopold Cafe", specialty: "Continental & Indian", priceRange: "₹800–₹1,500", desc: "Legendary heritage cafe in Colaba since 1871" },
+        { name: "Sardar Pav Bhaji", specialty: "Butter Pav Bhaji", priceRange: "₹150–₹300", desc: "Mumbai's most famous and buttery Pav Bhaji" },
+      ]
+    },
+    reelScript: { hook: "The city of dreams — Mumbai in 30s 🌃✨", voiceover: ["Gateway of India at sunrise.", "Vada Pav on the streets.", "Sunset at Marine Drive.", "Mumbai never sleeps."], scenes: ["Pigeons at Gateway", "Frying Vada Pav", "Time-lapse of Marine Drive traffic lights", "Local train passing"], textOverlays: ["City of Dreams 🌟", "Vada Pav love 🍔", "Queen's Necklace 💎"] },
+    captions: ["Mumbai isn't a city, it's an emotion ❤️🏙️", "Chasing sunsets at the Queen's Necklace ✨"],
+    hashtags: ["#Mumbai", "#Bombay", "#MarineDrive", "#MumbaiDiaries", "#IncredibleIndia", "#CityOfDreams"]
+  },
+
+  kolkata: {
+    name: "Kolkata", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1558431382-27e303142255?q=80&w=2070&auto=format&fit=crop",
+    attractions: [
+      { name: "Victoria Memorial", desc: "A large marble building dedicated to Queen Victoria, surrounded by beautiful gardens.", fee: "₹30", bestTime: "Morning or Late Afternoon", imagePrompt: "Victoria Memorial Kolkata, white marble structure, reflection pool, 4K" },
+      { name: "Howrah Bridge", desc: "The iconic cantilever bridge spanning the Hooghly River.", fee: "Free", bestTime: "Evening", imagePrompt: "Howrah Bridge illuminated at night, yellow taxi driving by, 4K" },
+      { name: "Dakshineswar Kali Temple", desc: "A famous Hindu temple on the eastern bank of the Hooghly River.", fee: "Free", bestTime: "Early Morning", imagePrompt: "Dakshineswar Temple, traditional Bengali roof structure, river bank, 4K" },
+      { name: "Park Street", desc: "The food and entertainment hub of Kolkata, famous for its heritage restaurants.", fee: "Free", bestTime: "Evening", imagePrompt: "Park Street Kolkata night time, vintage cafe signs, bustling, 4K" },
+    ],
+    hotels: [
+      { name: "The Oberoi Grand", price: 250, location: "New Market Area", features: ["Heritage Luxury", "Pool", "Spa", "Dining"], rating: 4.8 },
+      { name: "ITC Royal Bengal", price: 180, location: "EM Bypass", features: ["Modern Luxury", "City Views", "Pool"], rating: 4.7 },
+      { name: "Backpackers Park", price: 10, location: "Park Street", features: ["WiFi", "AC", "Bunk Beds"], rating: 4.2 },
+    ],
+    food: {
+      dishes: ["Rasgulla", "Kathi Roll", "Macher Jhol", "Puchka", "Mishti Doi"],
+      restaurants: [
+        { name: "Peter Cat", specialty: "Chelo Kebab", priceRange: "₹600–₹1,200", desc: "Iconic Park Street restaurant famous for its Chelo Kebab" },
+        { name: "Kusum Rolls", specialty: "Kolkata Kathi Rolls", priceRange: "₹80–₹150", desc: "The most legendary roll shop on Park Street" },
+      ]
+    },
+    reelScript: { hook: "The City of Joy hits the soul 💛🚖", voiceover: ["Victoria Memorial beauty.", "Yellow taxis and old streets.", "The best street food in India.", "Kolkata is pure art."], scenes: ["Victoria Memorial wide shot", "Yellow ambassador passing", "Puchka being served close up", "Tram moving down street"], textOverlays: ["City of Joy 💛", "Yellow Taxis 🚖", "Puchka love 😋"] },
+    captions: ["Creating memories in the City of Joy 💛✨", "Rosogolla and tram rides — pure Kolkata bliss 🚋🍬"],
+    hashtags: ["#Kolkata", "#CityOfJoy", "#Calcutta", "#KolkataDiaries", "#BengaliFood", "#IncredibleIndia"]
+  },
+
+  chennai: {
+    name: "Chennai", country: "India",
+    heroImage: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=2070&auto=format&fit=crop",
+    attractions: [
+      { name: "Marina Beach", desc: "The longest natural urban beach in the country.", fee: "Free", bestTime: "Sunrise or Evening", imagePrompt: "Marina Beach Chennai at golden hour, waves, silhouette of people, 4K" },
+      { name: "Kapaleeshwarar Temple", desc: "A stunning 7th-century Dravidian-style Hindu temple in Mylapore.", fee: "Free", bestTime: "Morning", imagePrompt: "Kapaleeshwarar Temple Chennai, colorful gopuram, traditional architecture, 4K" },
+      { name: "San Thome Basilica", desc: "A beautiful white Catholic basilica built over the tomb of St. Thomas.", fee: "Free", bestTime: "Afternoon", imagePrompt: "San Thome Basilica white gothic architecture, clear blue sky, 4K" },
+      { name: "DakshinaChitra", desc: "A living-history museum dedicated to South Indian heritage and culture.", fee: "₹175", bestTime: "10 AM - 4 PM", imagePrompt: "DakshinaChitra traditional south indian courtyard houses, cultural, 4K" },
+    ],
+    hotels: [
+      { name: "ITC Grand Chola", price: 250, location: "Guindy", features: ["Palatial Luxury", "Multiple Pools", "Fine Dining", "Spa"], rating: 4.8 },
+      { name: "The Leela Palace", price: 220, location: "MRC Nagar", features: ["Sea View", "Luxury", "Pool"], rating: 4.7 },
+      { name: "Zostel Chennai", price: 12, location: "T Nagar", features: ["WiFi", "Social vibe", "Central"], rating: 4.1 },
+    ],
+    food: {
+      dishes: ["Filter Coffee", "Idli Sambar", "Chettinad Chicken", "Masala Dosa", "Pongal"],
+      restaurants: [
+        { name: "Murugan Idli Shop", specialty: "Soft Idlis & Podi", priceRange: "₹100–₹300", desc: "World famous for incredibly soft idlis and spicy chutneys" },
+        { name: "Saravana Bhavan", specialty: "South Indian Meals", priceRange: "₹200–₹500", desc: "The iconic vegetarian South Indian chain" },
+      ]
+    },
+    reelScript: { hook: "Discovering the cultural heartbeat of the South 🌴🍛", voiceover: ["Sunrise at Marina Beach.", "The towering gopurams of Mylapore.", "Filter coffee to start the day.", "Chennai is tradition mixed with the modern."], scenes: ["Waves crashing at Marina", "Tilt up colorful temple tower", "Pouring filter coffee meter-style", "Silk sarees in a shop"], textOverlays: ["Marina Sunrise 🌅", "Temple Architecture 🛕", "Filter Kaapi ☕"] },
+    captions: ["Where tradition meets the sea 🌊✨", "Sunkissed in Singara Chennai 🌴🌞"],
+    hashtags: ["#Chennai", "#Madras", "#NammaChennai", "#TamilNadu", "#SouthIndia", "#IncredibleIndia"]
+  }
 };

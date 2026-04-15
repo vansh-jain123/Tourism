@@ -82,6 +82,8 @@ export default function AIPromptInput({ onGenerate, loading }) {
   const [city, setCity] = useState('');
   const [budget, setBudget] = useState('');
   const [days, setDays] = useState('3');
+  const [travelMode, setTravelMode] = useState('Family');
+  const [budgetStrategy, setBudgetStrategy] = useState('Moderate');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
@@ -133,7 +135,27 @@ export default function AIPromptInput({ onGenerate, loading }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!city.trim() || !budget.trim() || !days.trim()) return;
-    onGenerate(city.trim(), budget.trim(), days.trim());
+    onGenerate(city.trim(), budget.trim(), days.trim(), travelMode, budgetStrategy);
+  };
+
+  const getModeColor = (mode) => {
+    switch (mode) {
+      case 'Solo': return 'rgba(255, 152, 0, 0.2)'; 
+      case 'Couple': return 'rgba(233, 30, 99, 0.2)'; 
+      case 'Family': return 'rgba(76, 175, 80, 0.2)'; 
+      case 'Friends': return 'rgba(156, 39, 176, 0.2)'; 
+      case 'Business': return 'rgba(33, 150, 243, 0.2)';
+      default: return '';
+    }
+  };
+
+  const getStrategyColor = (strategy) => {
+    switch (strategy) {
+      case 'Frugal': return 'rgba(76, 175, 80, 0.2)'; // Green
+      case 'Moderate': return 'rgba(255, 152, 0, 0.2)'; // Orange
+      case 'Luxury': return 'rgba(156, 39, 176, 0.2)'; // Purple
+      default: return '';
+    }
   };
 
   return (
@@ -184,6 +206,28 @@ export default function AIPromptInput({ onGenerate, loading }) {
               placeholder="e.g. 3"
               value={days} onChange={(e) => setDays(e.target.value)} disabled={loading}
             />
+          </div>
+        </div>
+
+        <div className="input-row" style={{ marginTop: '15px' }}>
+          <div className="input-group">
+            <label className="input-label" htmlFor="mode-input">🎒 Travel Mode</label>
+            <select id="mode-input" className="text-input" style={{ backgroundColor: getModeColor(travelMode) }} value={travelMode} onChange={(e) => setTravelMode(e.target.value)} disabled={loading}>
+              <option value="Solo">Solo</option>
+              <option value="Couple">Couple</option>
+              <option value="Family">Family</option>
+              <option value="Friends">Friends</option>
+              <option value="Business">Business</option>
+            </select>
+          </div>
+
+          <div className="input-group">
+            <label className="input-label" htmlFor="strategy-input">💸 Budget Strategy</label>
+            <select id="strategy-input" className="text-input" style={{ backgroundColor: getStrategyColor(budgetStrategy) }} value={budgetStrategy} onChange={(e) => setBudgetStrategy(e.target.value)} disabled={loading}>
+              <option value="Frugal">Frugal (Minimize Costs)</option>
+              <option value="Moderate">Moderate (Balanced)</option>
+              <option value="Luxury">Luxury (Premium)</option>
+            </select>
           </div>
         </div>
 

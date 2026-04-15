@@ -3,19 +3,24 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import AuthPages from './components/AuthPages';
 import AIPromptInput from './components/AIPromptInput';
 import RecommendationResults from './components/RecommendationResults';
+import AIChatAssistant from './components/AIChatAssistant';
 import { generateTravelPlan } from './services/mockAIEngine';
 import './App.css';
 
 function AppContent() {
   const { user, signOut, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [travelData, setTravelData] = useState(null);
+  const [travelData, setTravelData] = useState(() => {
+    const saved = localStorage.getItem('wanderAiTravelData');
+    return saved ? JSON.parse(saved) : null;
+  });
 
-  const handleGeneratePlan = async (city, budget, tripDays) => {
+  const handleGeneratePlan = async (city, budget, tripDays, travelMode, budgetStrategy) => {
     setLoading(true);
     try {
-      const result = await generateTravelPlan(city, budget, tripDays);
+      const result = await generateTravelPlan(city, budget, tripDays, travelMode, budgetStrategy);
       setTravelData(result);
+      localStorage.setItem('wanderAiTravelData', JSON.stringify(result));
     } catch (error) {
       console.error("Failed to generate travel plan:", error);
     } finally {
@@ -23,7 +28,10 @@ function AppContent() {
     }
   };
 
-  const handleReset = () => setTravelData(null);
+  const handleReset = () => {
+    setTravelData(null);
+    localStorage.removeItem('wanderAiTravelData');
+  };
 
   if (authLoading) return null;
   if (!user) return <AuthPages />;
@@ -54,6 +62,7 @@ function AppContent() {
           <RecommendationResults data={travelData} onReset={handleReset} />
         )}
       </main>
+      <AIChatAssistant travelData={travelData} />
       <div className="bg-glow"></div>
     </div>
   );

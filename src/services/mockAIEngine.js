@@ -302,6 +302,13 @@ function matchCity(input) {
   if (lower.includes('jaipur') || lower.includes('pinkcity')) return ALL_CITIES.jaipur;
   if (lower.includes('manali')) return ALL_CITIES.manali;
   if (lower.includes('goa')) return ALL_CITIES.goa;
+  if (lower.includes('bangalore') || lower.includes('bengaluru')) return ALL_CITIES.bangalore;
+  if (lower.includes('lucknow')) return ALL_CITIES.lucknow;
+  if (lower.includes('varanasi') || lower.includes('banaras') || lower.includes('kashi')) return ALL_CITIES.varanasi;
+  if (lower.includes('ayodhya')) return ALL_CITIES.ayodhya;
+  if (lower.includes('mumbai') || lower.includes('bombay')) return ALL_CITIES.mumbai;
+  if (lower.includes('kolkata') || lower.includes('calcutta')) return ALL_CITIES.kolkata;
+  if (lower.includes('chennai') || lower.includes('madras')) return ALL_CITIES.chennai;
   // World cities
   if (lower.includes('paris') || lower.includes('france')) return ALL_CITIES.paris;
   if (lower.includes('tokyo') || lower.includes('japan') || lower.includes('kyoto')) return ALL_CITIES.tokyo;
@@ -314,12 +321,21 @@ function matchCity(input) {
   return ALL_CITIES.paris;
 }
 
-function generateBudgetBreakdown(budget, city) {
+function generateBudgetBreakdown(budget, city, budgetStrategy = 'Moderate') {
   const numBudget = parseInt(budget.toString().replace(/[^0-9]/g, '')) || 1500;
-  const stay = Math.round(numBudget * 0.40);
-  const food = Math.round(numBudget * 0.25);
-  const travel = Math.round(numBudget * 0.20);
-  const entryFees = Math.round(numBudget * 0.10);
+  
+  let pStay = 0.40, pFood = 0.25, pTravel = 0.20, pEntry = 0.10;
+
+  if (budgetStrategy === 'Frugal') {
+    pStay = 0.25; pFood = 0.25; pTravel = 0.35; pEntry = 0.10;
+  } else if (budgetStrategy === 'Luxury') {
+    pStay = 0.50; pFood = 0.30; pTravel = 0.10; pEntry = 0.05;
+  }
+
+  const stay = Math.round(numBudget * pStay);
+  const food = Math.round(numBudget * pFood);
+  const travel = Math.round(numBudget * pTravel);
+  const entryFees = Math.round(numBudget * pEntry);
   const misc = numBudget - stay - food - travel - entryFees;
 
   return {
@@ -383,11 +399,11 @@ function generateItinerary(cityData, customDays = 3) {
   return itinerary;
 }
 
-export const generateTravelPlan = async (cityName, budget, tripDays) => {
+export const generateTravelPlan = async (cityName, budget, tripDays, travelMode, budgetStrategy) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const city = matchCity(cityName);
-      const budgetData = generateBudgetBreakdown(budget, city);
+      const budgetData = generateBudgetBreakdown(budget, city, budgetStrategy);
 
       // Add image API integration using Pollinations (free, fast, AI-generated, no key required)
       const enhancedAttractions = city.attractions.map(a => ({
@@ -405,10 +421,23 @@ export const generateTravelPlan = async (cityName, budget, tripDays) => {
         image: `https://image.pollinations.ai/prompt/${encodeURIComponent('delicious ' + r.specialty + ' food photography plating')}`
       }));
 
+      // Generate Hidden Gems dynamically if not present
+      const hiddenGems = city.hiddenGems || [
+        { name: `Secret Alley in ${city.name}`, desc: `A beautiful lesser-known pathway filled with local artisans.`, fee: "Free", bestTime: "Late Afternoon", imagePrompt: `hidden secret alley in ${city.name}, local culture, rustic, 4K` },
+        { name: `${city.name} Panoramic Viewpoint`, desc: `A hilltop spot that most tourists miss, perfect for sunsets.`, fee: "Free", bestTime: "Sunset", imagePrompt: `hidden panoramic viewpoint in ${city.name}, breathtaking sunset, 4K` },
+        { name: `Old Town Cafe ${city.name}`, desc: `The oldest local cafe tucked away from the main streets.`, fee: "$", bestTime: "Morning", imagePrompt: `vintage local cafe in ${city.name}, authentic vibe, 4K` }
+      ];
+
+      const enhancedHiddenGems = hiddenGems.map(h => ({
+        ...h,
+        image: `https://image.pollinations.ai/prompt/${encodeURIComponent((h.imagePrompt || h.name) + ' realistic travel photography')}`
+      }));
+
       const cityDataWithImages = {
         ...city,
         attractions: enhancedAttractions,
         hotels: enhancedHotels,
+        hiddenGems: enhancedHiddenGems,
         food: { ...city.food, restaurants: enhancedRestaurants }
       };
 
@@ -422,6 +451,7 @@ export const generateTravelPlan = async (cityName, budget, tripDays) => {
         hotels: cityDataWithImages.hotels,
         food: cityDataWithImages.food,
         budget: budgetData,
+        hiddenGems: cityDataWithImages.hiddenGems,
         reelScript: cityDataWithImages.reelScript,
         captions: cityDataWithImages.captions,
         hashtags: cityDataWithImages.hashtags,

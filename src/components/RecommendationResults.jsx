@@ -5,6 +5,7 @@ import './RecommendationResults.css';
 const TABS = [
   { id: 'itinerary', label: '🗓️ Itinerary', icon: '🗓️' },
   { id: 'attractions', label: '🗺️ Attractions', icon: '🗺️' },
+  { id: 'hiddengems', label: '💎 Hidden Gems', icon: '💎' },
   { id: 'hotels', label: '🏨 Hotels', icon: '🏨' },
   { id: 'food', label: '🍽️ Food', icon: '🍽️' },
   { id: 'budget', label: '💰 Budget', icon: '💰' },
@@ -17,20 +18,20 @@ const TABS = [
 // 🖼️ IMAGE STRATEGY
 //
 // We use the Wikipedia Search API to find real, exact photos of specific 
-// attractions (e.g. Baga Beach, Robber's Cave) natively using their search engine.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// Hook: Fetch a real photo using Wikipedia's advanced Search API
-function useWikiSearchImage(query) {
+// Hook: Fetch real photo using Wikipedia API, fallback to AI image
+function useRealImage(query, fallbackUrl) {
   const [src, setSrc] = useState(null);
 
   useEffect(() => {
-    if (!query) return;
-    const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages&format=json&pithumbsize=600&origin=*`;
-
-    fetch(url)
-      .then(r => r.json())
-      .then(data => {
+    if (!query) {
+       setSrc(fallbackUrl);
+       return;
+    }
+    const fetchWikiImage = async () => {
+      try {
+        const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages&format=json&pithumbsize=600&origin=*`;
+        const res = await fetch(url);
+        const data = await res.json();
         const pages = data?.query?.pages;
         if (pages) {
           const page = Object.values(pages)[0];
@@ -39,18 +40,17 @@ function useWikiSearchImage(query) {
             return;
           }
         }
-        // Fallback to picsum if Wikipedia doesn't have an image for this place
-        setSrc(`https://picsum.photos/seed/${encodeURIComponent(query)}/600/400`);
-      })
-      .catch(() => {
-        setSrc(`https://picsum.photos/seed/${encodeURIComponent(query)}/600/400`);
-      });
-  }, [query]);
+        setSrc(fallbackUrl);
+      } catch (err) {
+        setSrc(fallbackUrl);
+      }
+    };
+    fetchWikiImage();
+  }, [query, fallbackUrl]);
 
-  return src;
+  return src || fallbackUrl;
 }
 
-// Reliable high-quality Direct Unsplash URLs for specific categories
 const HOTEL_IMAGES = [
   "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=600&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=600&auto=format&fit=crop",
@@ -60,6 +60,17 @@ const HOTEL_IMAGES = [
   "https://images.unsplash.com/photo-1535827841776-24afc1e255ac?q=80&w=600&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=600&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=600&auto=format&fit=crop",
+];
+
+const ATTRACTION_IMAGES = [
+  "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1504150558240-0b4fd8946624?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=600&auto=format&fit=crop",
 ];
 
 const FOOD_IMAGES = [
@@ -78,12 +89,20 @@ const FOOD_IMAGES = [
 // ── Sub-components that use the wiki hook ─────────────────────────────────────
 
 function AttractionCard({ attraction, index, city }) {
-  const imgSrc = useWikiSearchImage(`${attraction.name} ${city}`);
+  // Use the AI image provided by the mock engine, with a fallback placeholder
+  const aiImgSrc = attraction.image || `https://picsum.photos/seed/${index}${city.replace(/[^a-zA-Z]/g, '')}/600/400`;
+  const imgSrc = useRealImage(`${attraction.name} ${city}`, aiImgSrc);
+  const fallbackSrc = ATTRACTION_IMAGES[index % ATTRACTION_IMAGES.length];
 
   return (
     <div className="attraction-card glass-panel" style={{ animationDelay: `${index * 0.08}s` }}>
       <div className="card-image" style={{ background: 'rgba(255,255,255,0.05)' }}>
-        {imgSrc && <img src={imgSrc} alt={attraction.name} loading="lazy" style={{ animation: 'slideUpFade 0.5s ease' }} />}
+        <img src={imgSrc} alt={attraction.name} loading="lazy" style={{ animation: 'slideUpFade 0.5s ease' }} 
+             onError={(e) => { 
+                if (e.target.src !== fallbackSrc) {
+                  e.target.src = fallbackSrc;
+                }
+             }} />
       </div>
       <div className="attraction-number">{String(index + 1).padStart(2, '0')}</div>
       <div className="attraction-info">
@@ -191,6 +210,18 @@ export default function RecommendationResults({ data, onReset }) {
     </div>
   );
 
+  const renderHiddenGems = () => (
+    <div className="section-content">
+      <h3 className="section-heading">Hidden Gems in {data.city}</h3>
+      <p className="section-desc">Skip the crowds and explore these lesser-known, authentic spots.</p>
+      <div className="attractions-grid">
+        {data.hiddenGems.map((g, i) => (
+          <AttractionCard key={`gem-${i}`} attraction={g} index={i} city={data.city} />
+        ))}
+      </div>
+    </div>
+  );
+
   const renderHotels = () => (
     <div className="section-content">
       <h3 className="section-heading">Recommended Hotels</h3>
@@ -228,7 +259,7 @@ export default function RecommendationResults({ data, onReset }) {
       <h3 className="section-heading">Budget Breakdown</h3>
       <div className="budget-container glass-panel">
         <div className="budget-total">
-          <span className="budget-label">Total Budget</span>
+          <span className="budget-label">Total Budget (Optimized)</span>
           <span className="budget-amount">${data.budget.total.toLocaleString()}</span>
         </div>
         <div className="budget-bars">
@@ -358,6 +389,7 @@ export default function RecommendationResults({ data, onReset }) {
     switch (activeTab) {
       case 'itinerary':   return renderItinerary();
       case 'attractions': return renderAttractions();
+      case 'hiddengems':  return renderHiddenGems();
       case 'hotels':      return renderHotels();
       case 'food':        return renderFood();
       case 'budget':      return renderBudget();

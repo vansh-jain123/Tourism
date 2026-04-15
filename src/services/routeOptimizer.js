@@ -13,6 +13,13 @@ export const CITY_COORDS = {
   'London': { lat: 51.5074, lng: -0.1278 },
   'Bali': { lat: -8.3405, lng: 115.0920 },
   'Bangkok': { lat: 13.7563, lng: 100.5018 },
+  'Bangalore': { lat: 12.9716, lng: 77.5946 },
+  'Lucknow': { lat: 26.8467, lng: 80.9462 },
+  'Varanasi': { lat: 25.3176, lng: 82.9739 },
+  'Ayodhya': { lat: 26.7922, lng: 82.1998 },
+  'Mumbai': { lat: 19.0760, lng: 72.8777 },
+  'Kolkata': { lat: 22.5726, lng: 88.3639 },
+  'Chennai': { lat: 13.0827, lng: 80.2707 },
 };
 
 // Haversine formula for distance between two coordinates
